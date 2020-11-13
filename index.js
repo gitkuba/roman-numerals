@@ -46,7 +46,12 @@ class RomanNumber {
     }
   }
 
-  #validateRomanNumber(num) {}
+  #validateRomanNumber(num) {
+    const romSymbols = Object.keys(this.#VALUE_MAP);
+    const maxOccurancesSingleSign = 3;
+    const maxOccurancesDoubleSign = 1;
+    console.log(romSymbols);
+  }
 
   #convertToDecimal() {}
 
@@ -60,5 +65,10 @@ class RomanNumber {
     return this.#convertToRoman(this.data);
   }
 }
+
+const invalid = "MMMMCMXCIX";
+const valid = "MCMLXXX";
+
+new RomanNumber(invalid);
 
 module.exports = RomanNumber;
