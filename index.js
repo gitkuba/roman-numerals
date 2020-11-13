@@ -2,8 +2,8 @@ class RomanNumber {
   constructor(input) {
     this.validate(input);
     if (typeof input === "string") {
-      this.validateRomanNumber(input);
-      this.data = this.convertToDecimal(input);
+      this.#validateRomanNumber(input);
+      this.data = this.#convertToDecimal(input);
     } else {
       this.data = input;
     }
@@ -28,6 +28,20 @@ class RomanNumber {
     if (Number.isInteger(input) && (input < 1 || input > 3999)) {
       throw Error("invalid range");
     }
+  }
+
+  #validateRomanNumber() {}
+
+  #convertToDecimal() {}
+
+  #convertToRoman() {}
+
+  toInt() {
+    return this.data;
+  }
+
+  toString() {
+    return this.#convertToRoman(this.data);
   }
 }
 
