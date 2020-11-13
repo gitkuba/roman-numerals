@@ -16,10 +16,6 @@ test("returns correctly for input value = 0", () => {
   expect(() => new RomanNumber(0)).toThrow("invalid range");
 });
 
-test("returns correctly for input value = 1", () => {
-  expect(() => new RomanNumber(1)).toThrow("invalid range");
-});
-
 test("returns correctly for input value = 0.1", () => {
   expect(() => new RomanNumber(0.1)).toThrow("invalid input");
 });
@@ -30,6 +26,12 @@ test("returns correctly for input value = NaN", () => {
 
 test("returns correctly for input value = Infinity", () => {
   expect(() => new RomanNumber(Infinity)).toThrow("invalid input");
+});
+
+test("returns correctly for input value = 1", () => {
+  const n = new RomanNumber(1);
+  expect(n.toInt()).toEqual(1);
+  expect(n.toString()).toEqual("I");
 });
 
 test("returns correctly for input value = 3", () => {

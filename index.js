@@ -15,6 +15,10 @@ class RomanNumber {
     ) {
       throw Error("invalid input");
     }
+
+    if (Number.isInteger(input) && (input < 1 || input > 3999)) {
+      throw Error("invalid range");
+    }
   }
 }
 
