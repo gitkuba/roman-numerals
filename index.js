@@ -1,4 +1,6 @@
 class RomanNumber {
+  #VALIDATION_REGEX = /^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$/;
+
   #VALUE_MAP = {
     M: 1000,
     CM: 900,
@@ -46,11 +48,10 @@ class RomanNumber {
     }
   }
 
-  #validateRomanNumber(num) {
-    const romSymbols = Object.keys(this.#VALUE_MAP);
-    const maxOccurancesSingleSign = 3;
-    const maxOccurancesDoubleSign = 1;
-    console.log(romSymbols);
+  #validateRomanNumber(number) {
+    if (!this.#VALIDATION_REGEX.test(number)) {
+      throw Error("invalid input");
+    }
   }
 
   #convertToDecimal() {}
@@ -65,10 +66,5 @@ class RomanNumber {
     return this.#convertToRoman(this.data);
   }
 }
-
-const invalid = "MMMMCMXCIX";
-const valid = "MCMLXXX";
-
-new RomanNumber(invalid);
 
 module.exports = RomanNumber;

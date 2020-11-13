@@ -99,7 +99,7 @@ test("returns correctly for input value = 3000", () => {
 });
 
 test("returns correctly for input value = 10000", () => {
-  expect(new RomanNumber(10000)).toThrow("invalid range");
+  expect(() => new RomanNumber(10000)).toThrow("invalid range");
 });
 
 test("returns correctly for input value = CDXXIX", () => {
@@ -109,11 +109,11 @@ test("returns correctly for input value = CDXXIX", () => {
 });
 
 test("returns correctly for input value = CD1X", () => {
-  expect(new RomanNumber("CD1X")).toThrow("invalid input");
+  expect(() => new RomanNumber("CD1X")).toThrow("invalid input");
 });
 
 test("returns correctly for input value = error", () => {
-  expect(new RomanNumber("error")).toThrow("invalid input");
+  expect(() => new RomanNumber("error")).toThrow("invalid input");
 });
 
 test("returns correctly for input value = MCDLXXXII", () => {
@@ -129,9 +129,9 @@ test("returns correctly for input value = MCMLXXX", () => {
 });
 
 test("returns correctly for input value = MMMMCMXCIX", () => {
-  expect(new RomanNumber("MMMMCMXCIX")).toThrow("invalid input");
+  expect(() => new RomanNumber("MMMMCMXCIX")).toThrow("invalid input");
 });
 
 test("returns correctly for input value = MMMMDMXCIX", () => {
-  expect(new RomanNumber("MMMMDMXCIX")).toThrow("invalid input");
+  expect(() => new RomanNumber("MMMMDMXCIX")).toThrow("invalid input");
 });
