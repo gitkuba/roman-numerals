@@ -5,11 +5,11 @@ test('RomanNumber is a class', () => {
 })
 
 test('throws for null', () => {
-  expect(new RomanNumber(null)).toThrow('value required');
+  expect(() => new RomanNumber(null)).toThrow('value required');
 })
 
 test('throws for an empty string', () => {
-  expect(new RomanNumber('')).toThrow('value required');
+  expect(() => new RomanNumber('')).toThrow('value required');
 })
 
 test('returns correctly for input value = 0', () => {
