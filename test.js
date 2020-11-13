@@ -40,10 +40,16 @@ test("returns correctly for input value = 3", () => {
   expect(n.toString()).toEqual("III");
 });
 
+test("returns correctly for input value = 4", () => {
+  const n = new RomanNumber(4);
+  expect(n.toInt()).toEqual(4);
+  expect(n.toString()).toEqual("IV");
+});
+
 test("returns correctly for input value = 5", () => {
   const n = new RomanNumber(5);
   expect(n.toInt()).toEqual(5);
-  expect(n.toString()).toEqual("IV");
+  expect(n.toString()).toEqual("V");
 });
 
 test("returns correctly for input value = I", () => {

@@ -63,14 +63,25 @@ class RomanNumber {
     for (let num of number.toString()) {
       elements.push(num + "0".repeat(zeros--));
     }
+    console.log(Object.keys(map));
     // concatenate the numeral
     for (let element of elements) {
       if (element === "0") continue;
-      if (!map.hasOwnProperty(element)) {
-        let key = Object.keys(map).find((value) => value < element);
-        output += map[key].repeat(element.slice(0));
-      } else {
+
+      if (map.hasOwnProperty(element)) {
         output += map[element];
+        continue;
+      }
+
+      let value parseInt(element)
+      while (value > 0) {
+        let key = Object.keys(map)
+          .reverse()
+          .find((value) => value < element);
+
+        console.log(key);
+        console.log(element);
+        output += map[key].repeat(element.slice(0));
       }
     }
 
@@ -113,6 +124,6 @@ class RomanNumber {
   }
 }
 
-console.log(new RomanNumber(3).toString());
+console.log(new RomanNumber(1968).toString());
 
 module.exports = RomanNumber;
