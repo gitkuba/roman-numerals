@@ -56,7 +56,25 @@ class RomanNumber {
 
   #convertToRoman(number) {
     const map = this.#objectFlip(this.#MAP);
-    console.log(map);
+    let output = "";
+    let elements = [];
+    let zeros = number.toString().length - 1;
+    // split the number into units, tens, hundreads...
+    for (let num of number.toString()) {
+      elements.push(num + "0".repeat(zeros--));
+    }
+    // concatenate the numeral
+    for (let element of elements) {
+      if (element === "0") continue;
+      if (!map.hasOwnProperty(element)) {
+        let key = Object.keys(map).find((value) => value < element);
+        output += map[key].repeat(element);
+      } else {
+        output += map[element];
+      }
+    }
+
+    return output;
   }
 
   #validateRomanNumeral(numeral) {
