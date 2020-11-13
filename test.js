@@ -59,7 +59,7 @@ test("returns correctly for input value = III", () => {
 });
 
 test("returns correctly for input value = IIII", () => {
-  expect(new RomanNumber("IIII")).toThrow("invalid input");
+  expect(() => new RomanNumber("IIII")).toThrow("invalid input");
 });
 
 test("returns correctly for input value = IV", () => {
