@@ -18,7 +18,7 @@ class RomanNumber {
   };
 
   constructor(input) {
-    this.validate(input);
+    this.#validate(input);
     if (typeof input === "string") {
       this.#validateRomanNumeral(input);
       this.data = this.#convertToDecimal(input);
@@ -27,31 +27,12 @@ class RomanNumber {
     }
   }
 
-  validate(input) {
-    // check empty values
-    if (input === null || input === "") {
-      throw Error("value required");
-    }
-
-    // check input is a valid int or a string
-    if (
-      typeof input === "number" &&
-      !Number.isInteger(input) &&
-      typeof input !== "stirng"
-    ) {
-      throw Error("invalid input");
-    }
-
-    // check input is in correct range
-    if (Number.isInteger(input) && (input < 1 || input > 3999)) {
-      throw Error("invalid range");
-    }
+  toInt() {
+    return this.data;
   }
 
-  #validateRomanNumeral(numeral) {
-    if (!this.#VALIDATION_REGEX.test(numeral)) {
-      throw Error("invalid input");
-    }
+  toString() {
+    return this.#convertToRoman(this.data);
   }
 
   #convertToDecimal(numeral) {
@@ -73,17 +54,47 @@ class RomanNumber {
     return output;
   }
 
-  #convertToRoman(number) {}
-
-  toInt() {
-    return this.data;
+  #convertToRoman(number) {
+    const map = this.#objectFlip(this.#MAP);
+    console.log(map);
   }
 
-  toString() {
-    return this.#convertToRoman(this.data);
+  #validateRomanNumeral(numeral) {
+    if (!this.#VALIDATION_REGEX.test(numeral)) {
+      throw Error("invalid input");
+    }
+  }
+
+  #objectFlip(object) {
+    const result = {};
+    Object.keys(object).forEach((key) => {
+      result[object[key]] = key;
+    });
+    return result;
+  }
+
+  #validate(input) {
+    // check empty values
+    if (input === null || input === "") {
+      throw Error("value required");
+    }
+
+    // check input is a valid int or a string
+    if (
+      typeof input === "number" &&
+      !Number.isInteger(input) &&
+      typeof input !== "stirng"
+    ) {
+      throw Error("invalid input");
+    }
+
+    // check input is in correct range
+    if (Number.isInteger(input) && (input < 1 || input > 3999)) {
+      throw Error("invalid range");
+    }
   }
 }
 
-console.log(new RomanNumber("MCDLXXXII").toInt());
+console.log(new RomanNumber(1990).toString());
 
 module.exports = RomanNumber;
