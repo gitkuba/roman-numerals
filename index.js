@@ -19,12 +19,7 @@ class RomanNumber {
 
   constructor(input) {
     this.#validate(input);
-    if (typeof input === "string") {
-      this.#validateRomanNumeral(input);
-      this.data = this.#convertToDecimal(input);
-    } else {
-      this.data = input;
-    }
+    this.data = this.#convertToDecimal(input);
   }
 
   toInt() {
@@ -36,8 +31,10 @@ class RomanNumber {
   }
 
   #convertToDecimal(numeral) {
+    if (typeof numeral === "number") {
+      return numeral;
+    }
     let output = 0;
-
     for (let i = 0; i < numeral.length; i++) {
       // check if it's a double-letter sign.
       let double = numeral.slice(i, i + 2);
@@ -80,7 +77,6 @@ class RomanNumber {
         let key = Object.keys(map)
           .reverse()
           .find((value) => value <= remaining);
-        console.log("key", key);
         output += map[key];
         remaining -= parseInt(key);
       }
@@ -121,6 +117,11 @@ class RomanNumber {
     // check input is in correct range
     if (Number.isInteger(input) && (input < 1 || input > 3999)) {
       throw Error("invalid range");
+    }
+
+    // check string is a valid roman numeral
+    if (typeof input === "string") {
+      this.#validateRomanNumeral(input);
     }
   }
 }

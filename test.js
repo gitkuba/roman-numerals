@@ -28,6 +28,22 @@ test("returns correctly for input value = Infinity", () => {
   expect(() => new RomanNumber(Infinity)).toThrow("invalid input");
 });
 
+test("returns correctly for input value = CD1X", () => {
+  expect(() => new RomanNumber("CD1X")).toThrow("invalid input");
+});
+
+test("returns correctly for input value = error", () => {
+  expect(() => new RomanNumber("error")).toThrow("invalid input");
+});
+
+test("returns correctly for input value = MMMMCMXCIX", () => {
+  expect(() => new RomanNumber("MMMMCMXCIX")).toThrow("invalid input");
+});
+
+test("returns correctly for input value = MMMMDMXCIX", () => {
+  expect(() => new RomanNumber("MMMMDMXCIX")).toThrow("invalid input");
+});
+
 test("returns correctly for input value = 1", () => {
   const n = new RomanNumber(1);
   expect(n.toInt()).toEqual(1);
@@ -114,14 +130,6 @@ test("returns correctly for input value = CDXXIX", () => {
   expect(n.toString()).toEqual("CDXXIX");
 });
 
-test("returns correctly for input value = CD1X", () => {
-  expect(() => new RomanNumber("CD1X")).toThrow("invalid input");
-});
-
-test("returns correctly for input value = error", () => {
-  expect(() => new RomanNumber("error")).toThrow("invalid input");
-});
-
 test("returns correctly for input value = MCDLXXXII", () => {
   const n = new RomanNumber("MCDLXXXII");
   expect(n.toInt()).toEqual(1482);
@@ -132,12 +140,4 @@ test("returns correctly for input value = MCMLXXX", () => {
   const n = new RomanNumber("MCMLXXX");
   expect(n.toInt()).toEqual(1980);
   expect(n.toString()).toEqual("MCMLXXX");
-});
-
-test("returns correctly for input value = MMMMCMXCIX", () => {
-  expect(() => new RomanNumber("MMMMCMXCIX")).toThrow("invalid input");
-});
-
-test("returns correctly for input value = MMMMDMXCIX", () => {
-  expect(() => new RomanNumber("MMMMDMXCIX")).toThrow("invalid input");
 });
