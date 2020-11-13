@@ -63,25 +63,26 @@ class RomanNumber {
     for (let num of number.toString()) {
       elements.push(num + "0".repeat(zeros--));
     }
-    console.log(Object.keys(map));
     // concatenate the numeral
     for (let element of elements) {
+      // zero doesn't need to be converted
       if (element === "0") continue;
 
+      // if the value exists in the map just add it e.g. 1000 -> M
       if (map.hasOwnProperty(element)) {
         output += map[element];
         continue;
       }
 
-      let value parseInt(element)
-      while (value > 0) {
+      // now let's handle more complex components like LXXX
+      let remaining = parseInt(element);
+      while (remaining > 0) {
         let key = Object.keys(map)
           .reverse()
-          .find((value) => value < element);
-
-        console.log(key);
-        console.log(element);
-        output += map[key].repeat(element.slice(0));
+          .find((value) => value <= remaining);
+        console.log("key", key);
+        output += map[key];
+        remaining -= parseInt(key);
       }
     }
 
