@@ -68,7 +68,7 @@ class RomanNumber {
       if (element === "0") continue;
       if (!map.hasOwnProperty(element)) {
         let key = Object.keys(map).find((value) => value < element);
-        output += map[key].repeat(element);
+        output += map[key].repeat(element.slice(0));
       } else {
         output += map[element];
       }
@@ -113,6 +113,6 @@ class RomanNumber {
   }
 }
 
-console.log(new RomanNumber(1990).toString());
+console.log(new RomanNumber(3).toString());
 
 module.exports = RomanNumber;
