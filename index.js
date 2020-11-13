@@ -126,6 +126,4 @@ class RomanNumber {
   }
 }
 
-console.log(new RomanNumber(1968).toString());
-
 module.exports = RomanNumber;
